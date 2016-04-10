@@ -1,2 +1,2 @@
 # django-registeration
-A django app for user registeration
+A django app, 'account' for user registeration

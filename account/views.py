@@ -42,7 +42,7 @@ def login(request):
     return render(request, 'authentication/login.html', { 'form': f }) # Template of login page
 
 ''' 
-    Logout view.
+    Logout view
 '''  
 @require_GET
 def logout(request):
@@ -50,7 +50,7 @@ def logout(request):
     return redirect('login')
 
 '''
-    Signup view. Register users.
+    Signup view. Register users
 '''
 @require_http_methods(['GET', 'POST'])
 def signup(request):

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>{% block pagetitle %} Welcome to PosterInfinity {% endblock %}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link href='https://fonts.googleapis.com/css?family=Roboto|Lato' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        {% include 'material/includes/material_css.html' %}
+        <link href="{% static 'base/css/navbar.css' %}" rel='stylesheet' type='text/css'>
+        <link href="{% static 'base/css/posterinfinity_index.css' %}" rel='stylesheet' type='text/css'>
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+        {% include 'base/navbar.html' %}
+        {% block carousel %}{% endblock %}
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+        <section>
+            {% block fullWidthContent %}{% endblock %}
+        </section>
+        <script src="{% static 'base/js/jquery-2.1.4.min.js' %}"></script>
+        <script src="{% static 'material/js/jquery.datetimepicker.js' %}"></script>
+        <script src="{% static 'material/js/jquery.formset.js' %}"></script>
+        <script src="{% static 'material/js/materialize.js' %}"></script>
+        <script src="{% static 'material/js/material_init.js' %}"></script>
+        <script src="{% static 'base/js/functions.js' %}"></script>
+        <script src="{% static 'base/js/search.js' %}"></script>
+        <script type="text/javascript">
+
+            function updateCartItemCount() {
+                var badge = $('#cart-count-badge');
+                 $.ajax({
+                     type: 'GET',
+                     url: "{% url 'item_count' %}",
+                     success: function(data, status, xhr) {
+                         badge.text(data.count);
+                     },
+                     error: function(xhr, status, error) {
+                         console.log(status);
+                     }
+                });
+            }
+
+            $(document).ready(function() {
+                ProductSearch.init('search');
+                updateCartItemCount();
+            });
+        </script>
+        {% block morescripts %}{% endblock %}
+    </body>
+</html>

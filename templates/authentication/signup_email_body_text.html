@@ -1,0 +1,7 @@
+Hi {{ username }},
+Thanks for signing up.
+You are just one step away from completing the sign up process. Just click on the link below to verify your account.
+
+{{ protocol }}://{{ domain }}{% url 'activate' uid=uid token=token %}
+
+Thanks

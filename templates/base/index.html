@@ -1,0 +1,128 @@
+{% extends 'base/base.html' %}
+{% load material_form %}
+{% load staticfiles %}
+
+{% block carousel %}
+<div class="row" id="carousel">
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- <h5 class="pi-heading"><span>POSTERS</span></h5> -->
+    <div class="col s4">
+        <a href="{% url 'posters' %}">
+            <div class="pi-category z-depth-1">
+                <div class="pi-card-overlay"></div>
+                <img src="{% static 'base/images/stickers.png' %}">
+            </div>
+            <span class="pi-card-title">POSTERS</span>
+        </a>
+    </div>
+
+    <div class="col s4">
+        <a href="{% url 'stickers' %}">
+            <div class="pi-category z-depth-1">
+                <div class="pi-card-overlay"></div>
+                <img src="{% static 'base/images/stickers.png' %}">
+            </div>
+            <span class="pi-card-title">STICKERS</span>
+        </a>
+    </div>
+
+    <div class="col s4">
+        <a href="{% url 'decals' %}">
+            <div class="pi-category z-depth-1">
+                <div class="pi-card-overlay"></div>
+                <img src="{% static 'base/images/stickers.png' %}">
+            </div>
+            <span class="pi-card-title">DECALS</span>
+        </a>
+    </div>
+     {# <a class="waves-effect waves-light btn right view-more-btn">View More</a> #}
+</div>
+<div class="row">
+    <h5 class="pi-heading"><span>FEATURED PRODUCTS</span></h5>
+    {% for decal in decals_set %}
+        <div class="col s3">
+            <div class="card">
+                <div class="card-image">
+                    <img src={{ decal.product_dp.url }}>
+                </div>
+                <div class="card-action">
+                    <a href="/products/{{ decal.id }}">{{ decal.title }}</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <a class="waves-effect waves-light btn right view-more-btn">View More</a>
+</div>
+<!-- <div class="row">
+    <h5 class="pi-heading"><span>FEATURED PRODUCTS</span></h5>
+</div> -->
+
+{% endblock %}
+{% block fullWidthContent %}
+<hr class="divider">
+<div class="row" id="what-we-do">
+    <div class="container row-flex" id="our-content">
+        <div class="col-flex content-container">
+            <span class="fa fa-truck custom-font"></span>
+            <h6 class="our-content-heading">CASH ON DELIVERY</h6>
+            <!--<p>We do cash on delivery within 2-4 business days, for a minimum order of Rs 200.</p>-->
+        </div>
+        <div class="col-flex content-container">
+            <span class="fa fa-whatsapp custom-font"></span>
+            <h6 class="our-content-heading">WHATSAPP ORDERING</h6>
+            <!--<p>Order on whatsapp, just send your address details and product SKU number.</p>-->
+        </div>
+        <div class="col-flex content-container">
+            <span class="fa fa-archive custom-font"></span>
+            <h6 class="our-content-heading">BULK ORDERING</h6>
+            <!--<p>We take orders in bulk and deliver it at your door step on request. Read more <a href="{% url 'bulk_order' %}">here</a>.</p>-->
+        </div>
+        <div class="col-flex content-container">
+            <span class="fa fa-check-circle-o custom-font"></span>
+            <h6 class="our-content-heading">Quality Assured</h6>
+            <!--<p>We do cash on delivery within 2-4 business days, for a minimum order of Rs 200.</p> -->
+        </div>
+    </div>
+</div>
+
+
+<div class="row" id="request">
+    <h5 id="request-heading">Request your design?</h5>
+    <div class="col s8 offset-s2" id="request-container">
+        <p class="pi-para">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <br>
+        <div class="row-flex" style="justify-content:center;">
+            <a class="waves-effect waves-light btn" href="{% url 'request_design' %}">Request a design</a>
+        </div>
+    </div>
+</div>
+<div class="row" id="social">
+    <h5 id="social-heading">Connect with us ...</h5>
+
+</div>
+<footer class="row">
+    <div class="col s1 offset-s1">
+        <ul>
+            <li class="footer-heading">About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+        </ul>
+    </div>
+    <div class="col s1">
+        <ul>
+            <li class="footer-heading">About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+            <li>About Us</li>
+        </ul>
+    </div>
+</footer>
+{% endblock %}
